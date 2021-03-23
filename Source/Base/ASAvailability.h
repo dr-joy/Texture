@@ -23,19 +23,19 @@
 
 // This needs to stay in sync with Weaver
 #ifndef AS_USE_VIDEO
-  #define AS_USE_VIDEO 0
+  #define AS_USE_VIDEO 1
 #endif
 
 #ifndef AS_USE_PHOTOS
-  #define AS_USE_PHOTOS 0
+  #define AS_USE_PHOTOS 1
 #endif
 
 #ifndef AS_USE_MAPKIT
-  #define AS_USE_MAPKIT 0
+  #define AS_USE_MAPKIT 1
 #endif
 
 #ifndef AS_USE_ASSETS_LIBRARY
-  #define AS_USE_ASSETS_LIBRARY 0
+  #define AS_USE_ASSETS_LIBRARY 1
 #endif
 
 #ifndef kCFCoreFoundationVersionNumber_iOS_10_0
