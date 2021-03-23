@@ -2839,6 +2839,16 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"AS_USE_ASSETS_LIBRARY=1",
+					"$(inherited)",
+					"AS_USE_MAPKIT=1",
+					"$(inherited)",
+					"AS_USE_PHOTOS=1",
+					"$(inherited)",
+					"AS_USE_VIDEO=1",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
