@@ -11,17 +11,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import <AsyncDisplayKit/ASBaseDefines.h>
-#import <AsyncDisplayKit/ASDisplayNodeExtras.h>
-#import <AsyncDisplayKit/ASImageProtocols.h>
+#import "ASBaseDefines.h"
+#import "ASDisplayNodeExtras.h"
+#import "ASImageProtocols.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-ASDK_EXTERN void ASInitializeFrameworkMainThreadOnConstructor(void);
-ASDK_EXTERN void ASInitializeFrameworkMainThreadOnDestructor(void);
-
-// Calls both ASInitializeFrameworkMainThreadOnConstructor and ASInitializeFrameworkMainThreadOnDestructor
-// Used when manually initializing texture
 ASDK_EXTERN void ASInitializeFrameworkMainThread(void);
 
 ASDK_EXTERN BOOL ASDefaultAllowsGroupOpacity(void);

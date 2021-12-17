@@ -7,28 +7,28 @@
 //  Licensed under Apache 2.0: http://www.apache.org/licenses/LICENSE-2.0
 //
 
-#import <AsyncDisplayKit/ASTableViewInternal.h>
+#import "ASTableViewInternal.h"
 
-#import <AsyncDisplayKit/_ASCoreAnimationExtras.h>
-#import <AsyncDisplayKit/_ASDisplayLayer.h>
-#import <AsyncDisplayKit/_ASHierarchyChangeSet.h>
-#import <AsyncDisplayKit/ASBatchFetching.h>
-#import <AsyncDisplayKit/ASCellNode+Internal.h>
-#import <AsyncDisplayKit/ASCollectionElement.h>
-#import <AsyncDisplayKit/ASCollections.h>
-#import <AsyncDisplayKit/ASConfigurationInternal.h>
-#import <AsyncDisplayKit/ASDelegateProxy.h>
-#import <AsyncDisplayKit/ASDisplayNodeExtras.h>
-#import <AsyncDisplayKit/ASDisplayNode+FrameworkPrivate.h>
-#import <AsyncDisplayKit/ASDisplayNodeInternal.h>
-#import <AsyncDisplayKit/ASElementMap.h>
-#import <AsyncDisplayKit/ASInternalHelpers.h>
-#import <AsyncDisplayKit/ASLayout.h>
-#import <AsyncDisplayKit/ASTableNode+Beta.h>
-#import <AsyncDisplayKit/ASRangeController.h>
-#import <AsyncDisplayKit/ASTableLayoutController.h>
-#import <AsyncDisplayKit/ASBatchContext.h>
-#import <AsyncDisplayKit/ASTableView+Undeprecated.h>
+#import "_ASCoreAnimationExtras.h"
+#import "_ASDisplayLayer.h"
+#import "_ASHierarchyChangeSet.h"
+#import "ASBatchFetching.h"
+#import "ASCellNode+Internal.h"
+#import "ASCollectionElement.h"
+#import "ASCollections.h"
+#import "ASConfigurationInternal.h"
+#import "ASDelegateProxy.h"
+#import "ASDisplayNodeExtras.h"
+#import "ASDisplayNode+FrameworkPrivate.h"
+#import "ASDisplayNodeInternal.h"
+#import "ASElementMap.h"
+#import "ASInternalHelpers.h"
+#import "ASLayout.h"
+#import "ASTableNode+Beta.h"
+#import "ASRangeController.h"
+#import "ASTableLayoutController.h"
+#import "ASBatchContext.h"
+#import "ASTableView+Undeprecated.h"
 
 
 static NSString * const kCellReuseIdentifier = @"_ASTableViewCell";
@@ -1486,7 +1486,7 @@ static NSString * const kCellReuseIdentifier = @"_ASTableViewCell";
 
 - (void)_beginBatchFetchingIfNeededWithContentOffset:(CGPoint)contentOffset velocity:(CGPoint)velocity
 {
-  if (ASDisplayShouldFetchBatchForScrollView(self, self.scrollDirection, ASScrollDirectionVerticalDirections, contentOffset, velocity, NO)) {
+  if (ASDisplayShouldFetchBatchForScrollView(self, self.scrollDirection, ASScrollDirectionVerticalDirections, contentOffset, velocity)) {
     [self _beginBatchFetching];
   }
 }
@@ -1679,9 +1679,6 @@ static NSString * const kCellReuseIdentifier = @"_ASTableViewCell";
   LOG(@"--- UITableView endUpdates");
   ASPerformBlockWithoutAnimation(!changeSet.animated, ^{
     [super endUpdates];
-    if (numberOfUpdates > 0 && ASActivateExperimentalFeature(ASExperimentalRangeUpdateOnChangesetUpdate)) {
-      [self->_rangeController setNeedsUpdate];
-    }
     [self->_rangeController updateIfNeeded];
     [self _scheduleCheckForBatchFetchingForNumberOfChanges:numberOfUpdates];
   });

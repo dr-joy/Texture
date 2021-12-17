@@ -7,12 +7,12 @@
 //  Licensed under Apache 2.0: http://www.apache.org/licenses/LICENSE-2.0
 //
 
-#import <AsyncDisplayKit/ASInternalHelpers.h>
+#import "ASInternalHelpers.h"
 
-#import <AsyncDisplayKit/ASConfigurationInternal.h>
-#import <AsyncDisplayKit/ASRunLoopQueue.h>
-#import <AsyncDisplayKit/ASSignpost.h>
-#import <AsyncDisplayKit/ASThread.h>
+#import "ASConfigurationInternal.h"
+#import "ASRunLoopQueue.h"
+#import "ASSignpost.h"
+#import "ASThread.h"
 
 static NSNumber *allowsGroupOpacityFromUIKitOrNil;
 static NSNumber *allowsEdgeAntialiasingFromUIKitOrNil;
@@ -61,19 +61,7 @@ void _ASInitializeSignpostObservers(void)
 }
 #endif  // AS_SIGNPOST_ENABLE
 
-void ASInitializeFrameworkMainThreadOnConstructor(void)
-{
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    ASDisplayNodeCAssertMainThread();
-    ASNotifyInitialized();
-#if AS_SIGNPOST_ENABLE
-    _ASInitializeSignpostObservers();
-#endif
-  });
-}
-
-void ASInitializeFrameworkMainThreadOnDestructor(void)
+void ASInitializeFrameworkMainThread(void)
 {
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
@@ -86,13 +74,11 @@ void ASInitializeFrameworkMainThreadOnDestructor(void)
       allowsGroupOpacityFromUIKitOrNil = @(layer.allowsGroupOpacity);
       allowsEdgeAntialiasingFromUIKitOrNil = @(layer.allowsEdgeAntialiasing);
     }
+    ASNotifyInitialized();
+#if AS_SIGNPOST_ENABLE
+    _ASInitializeSignpostObservers();
+#endif
   });
-}
-
-ASDK_EXTERN void ASInitializeFrameworkMainThread(void)
-{
-  ASInitializeFrameworkMainThreadOnConstructor();
-  ASInitializeFrameworkMainThreadOnDestructor();
 }
 
 BOOL ASSubclassOverridesSelector(Class superclass, Class subclass, SEL selector)
