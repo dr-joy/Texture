@@ -1,2 +1,2 @@
-github "pinterest/PINRemoteImage" "3.0.0-beta.14"
-github "pinterest/PINCache" "3.0.1-beta.7"
+github "dr-joy/PINCache.git" "d6cf8955319950500ac9290e7a403bb05456cb14"
+github "dr-joy/PINRemoteImage" "d5da834a054e19dd9e406c86ff27f97011ea6575"
