@@ -1,4 +1,4 @@
 git "https://chromium.googlesource.com/webm/libwebp" "v0.6.0"
 github "dr-joy/PINCache.git" "drjoy-3.0.3"
-github "dr-joy/PINOperation.git" "01937caa867bf6f427d5c26a193823487e4c3771"
-github "dr-joy/PINRemoteImage" "d5da834a054e19dd9e406c86ff27f97011ea6575"
+github "dr-joy/PINOperation.git" "drjoy-1.2.1"
+github "dr-joy/PINRemoteImage" "drjoy-3.0.3"
