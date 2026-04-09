@@ -22,21 +22,14 @@
 #endif
 
 // This needs to stay in sync with Weaver
-#ifndef AS_USE_VIDEO
-  #define AS_USE_VIDEO 0
-#endif
-
-#ifndef AS_USE_PHOTOS
-  #define AS_USE_PHOTOS 0
-#endif
+#define AS_USE_VIDEO 1
+#define AS_USE_PHOTOS 1
 
 #ifndef AS_USE_MAPKIT
   #define AS_USE_MAPKIT 0
 #endif
 
-#ifndef AS_USE_ASSETS_LIBRARY
-  #define AS_USE_ASSETS_LIBRARY 0
-#endif
+#define AS_USE_ASSETS_LIBRARY 1
 
 #ifndef kCFCoreFoundationVersionNumber_iOS_10_0
   #define kCFCoreFoundationVersionNumber_iOS_10_0 1348.00
